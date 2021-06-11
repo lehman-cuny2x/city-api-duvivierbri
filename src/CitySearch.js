@@ -13,13 +13,6 @@ class CitySearch extends Component{
         }
     }
 
-    saveZip(){ //saves the zip code the user enters and updates the state 
-        let currZip = document.getElementById("userCity").value;
-        this.setState({zip: currZip});
-    }
-
-    make
-
     makeResultsArray(array){ //used in fetchInformation()
         let zipUrl = "http://ctp-zip-api.herokuapp.com/zip/";
         let state = "";
@@ -47,25 +40,30 @@ class CitySearch extends Component{
                     stateInfo.push(s.State);
                 })
             })
-            
+            .catch(function() {
+                results.innerHTML = "NO RESULTS FOUND";
+                console.log("error");
+            }); 
         }
 
+        //const newSI = Array.from(new Set(stateInfo));
         this.setState({states: stateInfo});
         console.log(this.state.states);
 
-        this.makeResults().bind(this);
+        this.makeResults();
     }
 
     makeResults(){
+        console.log(this.state.states);
         let results = document.getElementById("displayResults");
         results.innerHTML = ""
 
         //Now put them all together and display
-        this.state.zips.maps((data) => {
-            let newObject = "<div class=userResults>" + data + "</div>";
+        for (let i = 0; i < this.state.zips.length; i++){
+            let newObject = "<div class=userResults>" + this.state.zips[i] + "<br/>" + this.state.states[i] + "</div>"
 
-            results.innerHTML += newObject + "<br/>";
-        });
+            results.innerHTML += newObject;
+        }
     }
 
     fetchStateInfo(array){ //get states for each array
