@@ -46,7 +46,7 @@ class CitySearch extends Component{
         let currZip = document.getElementById("userCity").value;
         let results = document.getElementById("displayResults");
 
-        fetch(cityUrl + currZip)
+        fetch(cityUrl + currZip.toUpperCase())
             .then(response => response.json())
             .then(data => this.makeResultsArray(data))
             .catch(function() {
