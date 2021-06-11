@@ -13,7 +13,7 @@ What IS NOT working:
 What IS Working:
     - App can create a list of all the states each zip comes from 
     - All zipcodes are displayed
-
+    - CSS / styling is okay for now (until I'm able to display the rest of the information)
 */
 
 import React, { Component } from 'react';
