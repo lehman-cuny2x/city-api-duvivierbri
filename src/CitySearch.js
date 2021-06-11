@@ -34,7 +34,7 @@ class CitySearch extends Component{
             .then(data => {
                 data.map((s) => {
                     results.innerHTML +=  "<div class=userResults> " + 
-                    this.state.zips[i] + "<br/>" 
+                    "<p class=resultHeader>" + this.state.zips[i] + "<p/>"
                     + "City: " + s.City + "<br/>" 
                     + "State: " + s.State + "<br/>"
                     + "Population (estimated): " + s.EstimatedPopulation + "<br/>"
