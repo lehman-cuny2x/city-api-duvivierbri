@@ -1,11 +1,14 @@
 /*
 
-Problem: I know what I want to do, but I can't come up with a way to execute my plan through code.
+NOT WORKING
 
-Small issues: 
+My reflection
+
+What IS NOT working: 
     - States come back as undefined when I try to display them
     - Not sure how to organize the data so I can organize the zip codes by states (again, I have an idea...
         not sure how to execute it though)
+    - Cannot filter an array (the states array) to delete duplicates
 
 What IS Working:
     - App can create a list of all the states each zip comes from 
