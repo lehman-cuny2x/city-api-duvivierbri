@@ -28,6 +28,7 @@ class CitySearch extends Component{
         let stateInfo = [];
         let length = array.length;
         let results = document.getElementById("displayResults");
+        
 
         for (let i = 0; i < length; i++){
             zipInfo[i] = array[i];
@@ -46,39 +47,25 @@ class CitySearch extends Component{
                     stateInfo.push(s.State);
                 })
             })
-            .catch(function() {
-                results.innerHTML = "NO RESULTS FOUND";
-                console.log("error");
-            }); 
+            
         }
-
-        //remove duplicates
 
         this.setState({states: stateInfo});
         console.log(this.state.states);
 
-        const newStates = new Set(this.state.states);
-        let n = Array.from(newStates);
-        console.log(n);
-        /*
-        for (let i = 0; i < length; i++){
-            newArray[i] = array[i];
-        }
-    
-        this.setState({results: newArray});
-        console.log(this.state.results);
+        this.makeResults().bind(this);
+    }
 
-        results.innerHTML = "";
+    makeResults(){
+        let results = document.getElementById("displayResults");
+        results.innerHTML = ""
 
-        //now iterate through the information and pick out what we need 
-        this.state.results.map((data) => {
-            let zip = data;
-            let newObject = "<div class=userResults>" + zip + "</div>";
+        //Now put them all together and display
+        this.state.zips.maps((data) => {
+            let newObject = "<div class=userResults>" + data + "</div>";
 
-            //Add the information to the div element already created
             results.innerHTML += newObject + "<br/>";
-        })
-        */
+        });
     }
 
     fetchStateInfo(array){ //get states for each array
