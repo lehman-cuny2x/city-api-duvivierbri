@@ -52,7 +52,13 @@ class CitySearch extends Component{
             .then(response => response.json())
             .then(data => {
                 data.map((s) => {
-                    stateInfo.push(s.State);
+                    results.innerHTML +=  "<div class=userResults> " + 
+                    this.state.zips[i] + "<br/>" 
+                    + "City: " + s.City + "<br/>" 
+                    + "State: " + s.State + "<br/>"
+                    + "Population (estimated): " + s.EstimatedPopulation + "<br/>"
+                    + "Total Wages: " + s.TotalWages + "<br/>"
+                    + "<div/>";
                 })
             })
             .catch(function() {
@@ -65,7 +71,7 @@ class CitySearch extends Component{
         this.setState({states: stateInfo});
         console.log(this.state.states);
 
-        this.makeResults(); //display the results
+        //this.makeResults(); //display the results
     }
 
     makeResults(){
