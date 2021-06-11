@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import ZipSearch from './ZipSearch';
+import CitySearch from './CitySearch';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ZipSearch />
+    <CitySearch />
   </React.StrictMode>,
   document.getElementById('root')
 );
