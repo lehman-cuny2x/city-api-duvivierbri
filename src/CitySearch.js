@@ -6,7 +6,6 @@ class CitySearch extends Component{
         super();
         
         this.state = {
-            city:"default",
             states: [],
             zips: [],
             results: [] //information that will be displayed
@@ -15,8 +14,6 @@ class CitySearch extends Component{
 
     makeResultsArray(array){ //used in fetchInformation()
         let zipUrl = "http://ctp-zip-api.herokuapp.com/zip/";
-        let state = "";
-        let detailedInfo = [];
         let zipInfo = [];
         let stateInfo = [];
         let length = array.length;
@@ -50,16 +47,18 @@ class CitySearch extends Component{
         this.setState({states: stateInfo});
         console.log(this.state.states);
 
-        this.makeResults();
+        this.makeResults(); //display the results
     }
 
     makeResults(){
         console.log(this.state.states);
         let results = document.getElementById("displayResults");
-        results.innerHTML = ""
+        results.innerHTML = "";
 
         //Now put them all together and display
         for (let i = 0; i < this.state.zips.length; i++){
+            //This returns undefined for the state because for some reason the states are objects, not strings
+            //I do not know how to parse an object to a string
             let newObject = "<div class=userResults>" + this.state.zips[i] + "<br/>" + this.state.states[i] + "</div>"
 
             results.innerHTML += newObject;
@@ -91,10 +90,6 @@ class CitySearch extends Component{
                 results.innerHTML = "NO RESULTS FOUND";
                 console.log("error");
             }); 
-    }
-
-    displayInformation(){ //this displays the info from the 
-
     }
 
     render(){
