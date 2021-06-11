@@ -7,6 +7,10 @@ Small issues:
     - Not sure how to organize the data so I can organize the zip codes by states (again, I have an idea...
         not sure how to execute it though)
 
+What IS Working:
+    - App can create a list of all the states each zip comes from 
+    - All zipcodes are displayed
+
 */
 
 import React, { Component } from 'react';
