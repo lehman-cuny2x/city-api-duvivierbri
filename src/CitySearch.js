@@ -6,7 +6,9 @@ class CitySearch extends Component{
         super();
         
         this.state = {
-            zip:"00000",
+            city:"default",
+            states: [],
+            zips: [],
             results: [] //information that will be displayed
         }
     }
@@ -16,11 +18,49 @@ class CitySearch extends Component{
         this.setState({zip: currZip});
     }
 
+    make
+
     makeResultsArray(array){ //used in fetchInformation()
-        let newArray = [];
+        let zipUrl = "http://ctp-zip-api.herokuapp.com/zip/";
+        let state = "";
+        let detailedInfo = [];
+        let zipInfo = [];
+        let stateInfo = [];
         let length = array.length;
         let results = document.getElementById("displayResults");
 
+        for (let i = 0; i < length; i++){
+            zipInfo[i] = array[i];
+        }
+
+        this.setState({zips: zipInfo});
+        console.log(this.state.zips);
+
+        //Now take those zip codes and plug them into the zip URL
+        for(let i = 0; i < length; i++){
+            let n = this.state.states;
+            fetch(zipUrl + this.state.zips[i])
+            .then(response => response.json())
+            .then(data => {
+                data.map((s) => {
+                    stateInfo.push(s.State);
+                })
+            })
+            .catch(function() {
+                results.innerHTML = "NO RESULTS FOUND";
+                console.log("error");
+            }); 
+        }
+
+        //remove duplicates
+
+        this.setState({states: stateInfo});
+        console.log(this.state.states);
+
+        const newStates = new Set(this.state.states);
+        let n = Array.from(newStates);
+        console.log(n);
+        /*
         for (let i = 0; i < length; i++){
             newArray[i] = array[i];
         }
@@ -38,10 +78,23 @@ class CitySearch extends Component{
             //Add the information to the div element already created
             results.innerHTML += newObject + "<br/>";
         })
+        */
+    }
+
+    fetchStateInfo(array){ //get states for each array
+        //let zipUrl = "http://ctp-zip-api.herokuapp.com/zip/";
+        let newArray = [];
+
+        for (let i = 0; i < array.length; i++){
+            newArray[i] = array.State;
+        }
+
+        this.setState({states: newArray});
+        console.log(this.state.states);
+
     }
 
     fetchInformation(){ //this gets the information from the api
-        let zipUrl = "http://ctp-zip-api.herokuapp.com/zip/";
         let cityUrl = "http://ctp-zip-api.herokuapp.com/city/";
         let currZip = document.getElementById("userCity").value;
         let results = document.getElementById("displayResults");
