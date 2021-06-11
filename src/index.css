@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.pageHeader{
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-weight: lighter;
+  margin-top: 0px;
+}
+
+.userResults{
+  margin: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+.resultHeader{
+  background-color: lightgray;
+  margin-top: 0px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-size: 25px;
+}
+
+.userInputDisplay{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#prompt{
+  margin-bottom: 0px;
+}
