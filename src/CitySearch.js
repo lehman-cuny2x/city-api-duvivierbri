@@ -1,3 +1,14 @@
+/*
+
+Problem: I know what I want to do, but I can't come up with a way to execute my plan through code.
+
+Small issues: 
+    - States come back as undefined when I try to display them
+    - Not sure how to organize the data so I can organize the zip codes by states (again, I have an idea...
+        not sure how to execute it though)
+
+*/
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
